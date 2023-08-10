@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGamesResponse {
@@ -25,6 +26,9 @@ const useGames = () => {
         setError(err.message);
       });
     return () => controller.abort();
+    // must pass empty array as 2nd parameter or this will run continuously!
+    // this is because every time the callout is resolved, the state changes, resulting in
+    // another callout, resulting in an infinite loop
   }, []);
   return { games, error };
 };
