@@ -2,6 +2,7 @@
 //smaller: https://api.rawg.io/media/crop/600/400/games/736/73619bd336c894d6941d926bfd563946.jpg
 
 const getCroppedImageUrl = (url: string) => {
+  if (!url) return "";
   const target = "media/";
   const index = url.indexOf(target) + target.length;
   return url.slice(0, index) + "crop/600/400/" + url.slice(index);
