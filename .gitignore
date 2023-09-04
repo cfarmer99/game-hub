@@ -27,3 +27,4 @@ dist-ssr
 #API keys
 rawg-api-key.txt
 
+.vercel
